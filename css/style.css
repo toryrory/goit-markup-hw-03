@@ -10,6 +10,7 @@
   --text-footer: #fff9;
   --button-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   --basic-item-margin: 30px;
+  --basic-item: 3;
   --center-border: #ececec;
   --inner-border: #eeeeee;
 }
@@ -59,17 +60,39 @@ img {
   padding-top: 94px;
   padding-bottom: 94px;
 }
+.card-set {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(-1 * var(--basic-item-margin));
+  margin-top: calc(-1 * var(--basic-item-margin));
+}
+.card-item {
+  flex-basis: calc(100% / var(--basic-item) - var(--basic-item-margin));
+  margin-left: var(--basic-item-margin);
+  margin-top: var(--basic-item-margin);
+}
 .header {
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
-  margin-top: 0;
-  margin-bottom: 0;
   border-bottom: 1px solid var(--center-border);
 }
 .header-container {
   display: flex;
   align-items: center;
+  gap: 93px;
+}
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
 }
 
 /*site-nav auth-nav*/
@@ -77,13 +100,6 @@ img {
 .site-nav {
   display: flex;
   color: var(--text-black);
-  padding-left: 0;
-  margin-left: 93px;
-}
-.link {
-  display: block;
-  padding-top: 32px;
-  padding-bottom: 32px;
 }
 .auth-nav {
   display: flex;
@@ -148,7 +164,7 @@ img {
 .hero-button {
   margin-left: auto;
   margin-right: auto;
-  max-width: 200px;
+  min-width: 200px;
   padding: 10px 32px;
   border: none;
 
@@ -195,10 +211,7 @@ img {
 /*Features*/
 
 .feature-list {
-  display: flex;
-}
-.feature-item:not(:last-child) {
-  margin-right: var(--basic-item-margin);
+  --basic-item: 4;
 }
 .feature-title {
   margin-bottom: 10px;
@@ -219,7 +232,7 @@ img {
   cursor: pointer;
 }
 .portfolio-name {
-  margin: 20px 24px 4px;
+  margin-bottom: 4px;
 
   font-weight: 700;
   font-size: 18px;
@@ -228,32 +241,19 @@ img {
   color: var(--text-black);
 }
 .portfolio-desc {
-  margin: 0px 24px 20px;
-
   font-size: 16px;
   line-height: 1.9;
 }
-
-.portfolio-set {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: calc(-1 * var(--basic-item-margin));
-  margin-top: calc(-1 * var(--basic-item-margin));
-}
-.portfolio-set > .portfolio-item {
-  flex-basis: calc(100% / 3 - var(--basic-item-margin));
-  margin-left: var(--basic-item-margin);
-  margin-top: var(--basic-item-margin);
-}
-
-.portfolio-item {
-  background-color: var(--text-white);
+.portfolio-list .card-content {
+  padding: 20px 24px;
   border: 1px solid var(--inner-border);
+
+  background-color: var(--text-white);
 }
 
 /*Cards*/
 
-.card-section {
+.work {
   padding-top: 0;
 }
 .section-title {
@@ -268,34 +268,25 @@ img {
   color: var(--text-black);
   font-style: normal;
 }
-.card-list {
-  display: flex;
-}
-.card-item:not(:last-child) {
-  margin-right: var(--basic-item-margin);
-}
 
 /*Team*/
 
 .team-section {
   background-color: var(--background-grey);
 }
-.team-item-set {
-  display: flex;
-}
-.team-item:not(:last-child) {
-  margin-right: var(--basic-item-margin);
+.team-list .card-content {
+  padding-top: var(--basic-item-margin);
+  padding-bottom: var(--basic-item-margin);
 }
 .team-item {
+  --basic-item: 4;
+
   background-color: var(--text-white);
-  max-width: 270px;
-  max-height: 368px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 4px 4px;
 }
 .team-title {
-  margin-top: 30px;
   margin-bottom: 10px;
 
   font-weight: 500;
@@ -305,9 +296,6 @@ img {
   text-align: center;
 }
 .team-text {
-  margin-top: 10px;
-  margin-bottom: 30px;
-
   font-size: 16px;
   line-height: 1.18;
   text-align: center;
@@ -318,15 +306,14 @@ img {
 .footer {
   padding-top: 60px;
   padding-bottom: 60px;
+  
   background-color: var(--background-dark);
 }
-.logo-footer {
-  padding-bottom: 0;
-  margin-bottom: 20px;
-}
-.footer .link {
+.footer .logo {
+  display: block;
   padding-top: 0;
   padding-bottom: 0;
+  margin-bottom: 20px;
 }
 .footer-item:not(:last-child) {
   margin-bottom: 9px;
